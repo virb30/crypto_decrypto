@@ -84,7 +84,7 @@ def decrypt(txtin, formato='d', salto=None):
         return output
 
 
-def enc_cesar(txtin= '', salto=1):
+def enc_cesar(txtin='', salto=1):
 
     saida = ''
 
@@ -148,7 +148,7 @@ def tabela_vigenere():
 def enc_vig(txtin=''):
 
     alfabeto = tabela_vigenere()
-    key = raw_input("Informe a chave: ")
+    key = input("Informe a chave: ")
     key = key.strip()
     key = key.replace(" ", "")
     key = key.lower()
@@ -175,7 +175,7 @@ def enc_vig(txtin=''):
 
 def dec_vig(txtin=''):
 
-    key = raw_input("Informe a chave: ")
+    key = input("Informe a chave: ")
     key = key.strip()
     key = key.replace(" ", "")
     key = key.lower()
