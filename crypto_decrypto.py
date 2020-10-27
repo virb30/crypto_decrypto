@@ -3,6 +3,7 @@
 
 import sys
 import getopt
+from cesar_cipher import dec_cesar, enc_cesar, shift_cesar
 
 
 def base64_table(index=None):
@@ -84,69 +85,12 @@ def decrypt(txtin, formato='d', salto=None):
         return output
 
 
-def enc_cesar(txtin='', salto=1):
-
-    saida = ''
-
-    if txtin != '':
-        entrada = txtin.upper()
-        for c in entrada:
-            if c == ' ':
-                saida += ' '
-            else:
-                new_c = ord(c)
-                for i in range(1, int(salto) + 1, 1):
-                    new_c += 1
-                    if new_c > 90:
-                        new_c = 65
-                saida += chr(new_c)
-    return saida
-
-
-def dec_cesar(txtin='', salto=1):
-
-    saida = ''
-
-    if txtin != '':
-        entrada = txtin.upper()
-        for c in entrada:
-            if c == ' ':
-                saida += ' '
-            else:
-                new_c = ord(c)
-                for i in range(1, int(salto) + 1, 1):
-                    new_c -= 1
-                    if new_c < 65:
-                        new_c = 90
-                saida += chr(new_c)
-    return saida
-
-
-def shift_cesar(type='', txtin = ''):
-
-    saidas = []
-
-    for i in range(1, 26, 1):
-        if type == 'e':
-            saidas.append(enc_cesar(txtin, i))
-        if type == 'd':
-            saidas.append(dec_cesar(txtin, i))
-
-    saida = ''
-    for i, v in enumerate(saidas):
-        saida += str(i+1) + " - " + v + "\n"
-
-    return saida
-
-
 def tabela_vigenere():
-
     alfabeto = "abcdefghijklmnopqrstuvwxyz"
     return alfabeto
 
 
 def enc_vig(txtin=''):
-
     alfabeto = tabela_vigenere()
     key = input("Informe a chave: ")
     key = key.strip()
@@ -291,7 +235,6 @@ def dec_base64(txtin = ''):
 
 
 def main(argv):
-
     tipo = 'e'
     formato = 'd'
     salto = 1
