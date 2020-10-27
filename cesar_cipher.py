@@ -1,7 +1,6 @@
 LAST_VALID_ASCII = 90
 FIRST_VALID_ASCII = 65
 
-
 def enc_cesar(text_in='', salt=1):
     output = []
     if text_in == '':
